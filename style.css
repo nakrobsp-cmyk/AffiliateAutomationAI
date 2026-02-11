@@ -1,0 +1,231 @@
+.btn{
+  display:block;
+  margin:12px 0;
+  padding:14px;
+  background:#00ffcc;
+  color:#000;
+  text-align:center;
+  border-radius:12px;
+  font-weight:bold;
+  text-decoration:none;
+}
+.btn:hover{
+  opacity:0.8;
+}
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family: system-ui, -apple-system, sans-serif;
+  background:#0b0b0b;
+  color:#fff;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+section{
+  padding:70px 20px;
+  max-width:1200px;
+  margin:auto;
+}
+
+h1,h2,h3{
+  margin-bottom:20px;
+  font-weight:800;
+}
+
+
+/* =========================
+   HERO (พื้นหลัง AI)
+   👉 ใช้รูปที่คุณอัปไว้ /1.jpg
+========================= */
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+
+  background:
+    linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.9)),
+    url("./1.jpg");
+
+  background-size:cover;
+  background-position:center;
+}
+
+.title{
+  font-size:60px;
+  font-weight:900;
+  background:linear-gradient(90deg,#00eaff,#8b5cf6,#00ff88);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.subtitle{
+  opacity:.75;
+  margin-top:16px;
+  margin-bottom:30px;
+  font-size:18px;
+}
+
+
+/* =========================
+   BUTTONS (Affiliate)
+========================= */
+
+.btn{
+  display:inline-block;
+  padding:14px 26px;
+  margin:10px;
+  border-radius:12px;
+  font-weight:700;
+  text-decoration:none;
+  background:linear-gradient(90deg,#00eaff,#8b5cf6);
+  color:#000;
+  box-shadow:0 0 20px #00eaff66;
+  transition:.25s;
+}
+
+.btn:hover{
+  transform:translateY(-4px);
+  box-shadow:0 0 35px #00eaff;
+}
+
+
+/* =========================
+   GRID
+========================= */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+
+/* =========================
+   CARD (Tools / Ranking)
+========================= */
+
+.card{
+  background:#151515;
+  padding:22px;
+  border-radius:18px;
+  transition:.3s;
+  box-shadow:0 10px 25px rgba(0,0,0,.6);
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 25px #00eaff55;
+}
+
+.card h3{
+  margin-bottom:8px;
+}
+
+.card p{
+  opacity:.7;
+  font-size:14px;
+}
+
+
+/* =========================
+   RGB BORDER EFFECT
+========================= */
+
+.rgb-border{
+  position:relative;
+}
+
+.rgb-border::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:18px;
+
+  background:linear-gradient(
+    45deg,
+    #00eaff,
+    #8b5cf6,
+    #ff3cac,
+    #00ff88
+  );
+
+  background-size:300% 300%;
+  animation:rgb 6s linear infinite;
+  z-index:-1;
+}
+
+@keyframes rgb{
+  0%{background-position:0%}
+  50%{background-position:100%}
+  100%{background-position:0%}
+}
+
+
+/* =========================
+   TOOLS SECTION
+========================= */
+
+.tools{
+  text-align:center;
+}
+
+
+/* =========================
+   RANKING BOARD
+========================= */
+
+.leaderboard{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.rank{
+  background:#141414;
+  padding:20px 30px;
+  border-radius:16px;
+  font-weight:700;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+  text-align:center;
+  padding:40px;
+  opacity:.4;
+  font-size:14px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+  .title{
+    font-size:36px;
+  }
+
+  .btn{
+    width:100%;
+  }
+
+}
