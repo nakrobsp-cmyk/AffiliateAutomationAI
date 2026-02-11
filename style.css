@@ -229,3 +229,154 @@ h1,h2,h3{
   }
 
 }
+/* =================================================
+   🚀 PRO FINAL EFFECT PACK
+   (เพิ่มเท่านั้น ไม่ทับของเดิม)
+================================================= */
+
+
+/* ===============================
+   🌌 Background Glow Motion
+=============================== */
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+
+  background:
+    radial-gradient(circle at 20% 30%, #00eaff22, transparent 40%),
+    radial-gradient(circle at 80% 70%, #8b5cf622, transparent 40%),
+    radial-gradient(circle at 50% 90%, #00ff8822, transparent 40%);
+
+  animation: floatGlow 12s ease-in-out infinite alternate;
+}
+
+@keyframes floatGlow{
+  from{ transform:translateY(-25px) }
+  to{ transform:translateY(25px) }
+}
+
+
+/* ===============================
+   ✨ Section Fade In
+=============================== */
+
+section{
+  opacity:0;
+  transform:translateY(30px);
+  animation:fadeUp .7s ease forwards;
+}
+
+section:nth-child(2){animation-delay:.1s}
+section:nth-child(3){animation-delay:.2s}
+section:nth-child(4){animation-delay:.3s}
+section:nth-child(5){animation-delay:.4s}
+
+@keyframes fadeUp{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+
+/* ===============================
+   🔥 Card Hover Pro
+=============================== */
+
+.card:hover{
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:
+    0 0 15px #00eaff66,
+    0 0 40px #8b5cf644;
+}
+
+
+/* ===============================
+   💎 Button Pulse
+=============================== */
+
+.btn-rgb{
+  animation:pulse 2.5s infinite;
+}
+
+@keyframes pulse{
+  0%{ box-shadow:0 0 10px #00eaff }
+  50%{ box-shadow:0 0 35px #8b5cf6 }
+  100%{ box-shadow:0 0 10px #00eaff }
+}
+
+
+/* ===============================
+   📰 Auto Banner (วิ่งข่าว)
+=============================== */
+
+.ticker{
+  overflow:hidden;
+  white-space:nowrap;
+  background:#141414;
+  padding:10px 0;
+  border-top:1px solid #222;
+  border-bottom:1px solid #222;
+}
+
+.ticker span{
+  display:inline-block;
+  padding-left:100%;
+  animation:ticker 20s linear infinite;
+  color:#00eaff;
+  font-weight:700;
+}
+
+@keyframes ticker{
+  0%{ transform:translateX(0) }
+  100%{ transform:translateX(-100%) }
+}
+
+
+/* ===============================
+   🛒 Product Slider
+=============================== */
+
+.slider{
+  display:flex;
+  gap:18px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding-bottom:10px;
+}
+
+.slider::-webkit-scrollbar{
+  display:none;
+}
+
+.slider .card{
+  min-width:240px;
+  scroll-snap-align:start;
+}
+
+
+/* ===============================
+   🌈 Parallax Hero
+=============================== */
+
+.hero{
+  background-attachment:fixed;
+}
+
+@media(max-width:768px){
+  .hero{
+    background-attachment:scroll;
+  }
+}
+
+
+/* ===============================
+   🧠 Smooth Scroll
+=============================== */
+
+html{
+  scroll-behavior:smooth;
+}
