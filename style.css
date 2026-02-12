@@ -380,3 +380,14 @@ section:nth-child(5){animation-delay:.4s}
 html{
   scroll-behavior:smooth;
 }
+
+
+.btn-game{
+  background:linear-gradient(45deg,#ff00cc,#00ffff);
+  color:#fff;
+  padding:12px 20px;
+  border:none;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+}
