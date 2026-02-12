@@ -3,6 +3,91 @@
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Affiliate Automation AI</title>
+ <style>
+   body {
+     margin:0;
+     padding:0;
+     background:#000;
+     color:#fff;
+     font-family:sans-serif;
+   }
+
+   /* พื้นหลัง RGB Animation */
+   .rgb-bg {
+     position:fixed;
+     top:0; left:0;
+     width:100%; height:100%;
+     background:linear-gradient(45deg, red, blue, green, purple);
+     background-size:400% 400%;
+     animation:rgbMove 10s infinite alternate;
+     z-index:-1;
+   }
+   @keyframes rgbMove {
+     0% {background-position:0% 50%;}
+     50% {background-position:100% 50%;}
+     100% {background-position:0% 50%;}
+   }
+
+   /* ปุ่ม RGB Border */
+   .btn-rgb {
+     display:inline-block;
+     padding:10px 20px;
+     margin:10px;
+     color:#fff;
+     background:#111;
+     border:2px solid;
+     border-image:linear-gradient(90deg, red, green, blue) 1;
+     animation:rgbBorder 3s infinite;
+     text-decoration:none;
+     border-radius:5px;
+   }
+   @keyframes rgbBorder {
+     0% {border-image:linear-gradient(90deg, red, green, blue) 1;}
+     50% {border-image:linear-gradient(90deg, blue, purple, cyan) 1;}
+     100% {border-image:linear-gradient(90deg, green, yellow, red) 1;}
+   }
+
+   /* Card Glow */
+   .card {
+     background:#111;
+     padding:20px;
+     margin:10px;
+     border-radius:10px;
+     box-shadow:0 0 15px rgba(255,0,0,0.5);
+     animation:glow 5s infinite alternate;
+   }
+   @keyframes glow {
+     0% {box-shadow:0 0 15px rgba(255,0,0,0.5);}
+     50% {box-shadow:0 0 15px rgba(0,255,255,0.7);}
+     100% {box-shadow:0 0 15px rgba(0,255,0,0.5);}
+   }
+ </style>
+</head>
+<body>
+ <div class="rgb-bg"></div>
+
+ <section class="hero">
+   <h1>Affiliate Automation AI</h1>
+   <p>Creating automation for the next generation</p>
+   <a href="#tools" class="btn-rgb">🚀 เริ่มใช้เครื่องมือ</a>
+   <a href="#products" class="btn-rgb">🔥 ของขายดีวันนี้</a>
+ </section>
+
+ <section id="tools">
+   <h2>🧠 เครื่องมือ AI ยอดนิยม</h2>
+   <div class="card">Caption AI Generator</div>
+   <div class="card">AI แต่งรูป</div>
+   <div class="card">SEO Tools</div>
+ </section>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Affiliate Automation AI - Admin</title>
  <style>
    body { font-family: sans-serif; background:#000; color:#fff; margin:20px; }
