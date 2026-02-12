@@ -96,7 +96,11 @@ button{
 </head>
 
 <body>
-
+<div class="affiliate-box">
+  <button onclick="goAffiliate()" class="btn-buy">
+    🎁 สนับสนุนเกม / ซื้อสินค้า
+  </button>
+</div>
 <header>
   <a href="index.html" style="color:#0ff">← กลับหน้าแรก</a>
   <h2>🎮 Click Rush Game</h2>
@@ -104,7 +108,7 @@ button{
 
 <!-- 🔥 Banner Ad Top -->
 <div class="ad-banner">
-  <a href="YOUR_AFFILIATE_LINK" target="_blank">
+  <a href="#" onclick="goAffiliate()" target="_blank">
     🔥 โปรโมชั่นพิเศษ คลิกซื้อเลย
   </a>
 </div>
@@ -127,14 +131,14 @@ button{
 
   <div class="card">
     <p>Neon Pack</p>
-    <a href="YOUR_SHOPEE_LINK" target="_blank">
+    <a href="#" onclick="goAffiliate()" target="_blank">
       <button>ซื้อเลย</button>
     </a>
   </div>
 
   <div class="card">
     <p>AI Meme</p>
-    <a href="YOUR_LAZADA_LINK" target="_blank">
+    <a href="#" onclick="goAffiliate()" target="_blank">
       <button>ซื้อเลย</button>
     </a>
   </div>
@@ -142,7 +146,7 @@ button{
   <!-- 🔥 Native Ad -->
   <div class="card">
     <p>⭐ สินค้าแนะนำ</p>
-    <a href="YOUR_AFFILIATE_LINK" target="_blank">
+    <a href="#" onclick="goAffiliate()" target="_blank">
       <button style="background:#ff6600">ดูสินค้า</button>
     </a>
   </div>
@@ -153,7 +157,7 @@ button{
 <div id="popupAd" class="popupAd">
   <div class="popupBox">
     <h3>🎁 รับของถูกก่อนใคร</h3>
-    <a href="YOUR_AFFILIATE_LINK" target="_blank">
+    <a href="#" onclick="goAffiliate()" target="_blank">
       <button class="btn-main">ดูโปรโมชัน</button>
     </a>
     <br><br>
@@ -254,3 +258,18 @@ function assignAds(){
 }
 
 assignAds();
+
+
+
+<script>
+function goAffiliate(){
+  const links = [
+    "https://s.lazada.co.th/s.Z1MSxr?cc&t=h5",
+    "https://s.shopee.co.th/2B94H1T0pV"
+  ];
+
+  const random = Math.floor(Math.random() * links.length);
+  window.open(links[random], "_blank");
+}
+</script>
+</body>
