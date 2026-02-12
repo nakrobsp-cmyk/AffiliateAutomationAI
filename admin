@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+
+  <script type="module" src="js/firebase.js"></script>
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/app.js"></script>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="loginBox" class="login">
+  <h2>Admin Login</h2>
+  <button id="loginBtn">Login with Google</button>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="layout" style="display:none">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>⚙ Admin</h2>
+    <button data-page="affiliate">Affiliate</button>
+    <button data-page="products">Products</button>
+    <button data-page="ads">Ads</button>
+    <button data-page="news">News</button>
+    <button id="logoutBtn">Logout</button>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <section id="affiliate" class="page">
+      <h3>Affiliate Links</h3> 
+
+
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Affiliate Automation AI - Admin</title>
+ <style>
+   body { font-family: sans-serif; background:#000; color:#fff; margin:20px; }
+   h1,h2 { color:#0ff; }
+   .section { margin-bottom:30px; padding:20px; background:#111; border-radius:10px; }
+   input, textarea { width:100%; padding:8px; margin:5px 0; background:#222; color:#fff; border:none; border-radius:5px; }
+   button { padding:10px 20px; background:#ff6600; color:#fff; border:none; border-radius:5px; cursor:pointer; }
+   button:hover { background:#ff3300; }
+ </style>
+ <!-- Firebase SDK -->
+ <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+</head>
+<body>
+
+<h1>Affiliate Automation AI - Admin Dashboard</h1>
+
+<!-- Affiliate Manager -->
+<div class="section">
+  <h2>Affiliate Link Manager</h2>
+  <input type="text" id="shopeeLink" placeholder="Shopee Affiliate Link">
+  <input type="text" id="lazadaLink" placeholder="Lazada Affiliate Link">
+  <button onclick="saveAffiliate()">บันทึกลิงก์</button>
+</div>
+
+<!-- Product Manager -->
+<div class="section">
+  <h2>Product Manager</h2>
+  <input type="text" id="productName" placeholder="ชื่อสินค้า">
+  <input type="text" id="productPrice" placeholder="ราคา">
+  <input type="text" id="productLink" placeholder="ลิงก์สินค้า">
+  <button onclick="addProduct()">เพิ่มสินค้า</button>
+</div>
+
+<!-- Ads Manager -->
+<div class="section">
+  <h2>Ads Manager</h2>
+  <input type="text" id="adHeader" placeholder="Ad Slot Header">
+  <input type="text" id="adContent" placeholder="Ad Slot Content">
+  <input type="text" id="adFooter" placeholder="Ad Slot Footer">
+  <button onclick="saveAds()">บันทึกโฆษณา</button>
+</div>
+
+<!-- News Manager -->
+<div class="section">
+  <h2>News Manager</h2>
+  <input type="text" id="newsTitle" placeholder="หัวข้อข่าว">
+  <textarea id="newsContent" placeholder="รายละเอียดข่าว"></textarea>
+  <button onclick="addNews()">เพิ่มข่าว</button>
+</div>
+
+<script>
+  // Firebase Config (ใส่ค่าจริงจาก Console ของคุณ)
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+
+  // Init Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  // ฟังก์ชันบันทึก Affiliate
+  function saveAffiliate(){
+    const shopee = document.getElementById("shopeeLink").value;
+    const lazada = document.getElementById("lazadaLink").value;
+    db.collection("affiliate_links").doc("main").set({shopee, lazada});
+    alert("บันทึกลิงก์ Affiliate เรียบร้อย!");
+  }
+
+  // ฟังก์ชันเพิ่มสินค้า
+  function addProduct(){
+    const name = document.getElementById("productName").value;
+    const price = document.getElementById("productPrice").value;
+    const link = document.getElementById("productLink").value;
+    db.collection("products").add({name, price, link, createdAt: new Date()});
+    alert("เพิ่มสินค้าเรียบร้อย!");
+  }
+
+  // ฟังก์ชันบันทึก Ads
+  function saveAds(){
+    const header = document.getElementById("adHeader").value;
+    const content = document.getElementById("adContent").value;
+    const footer = document.getElementById("adFooter").value;
+    db.collection("ads").doc("slots").set({header, content, footer});
+    alert("บันทึกโฆษณาเรียบร้อย!");
+  }
+
+  // ฟังก์ชันเพิ่มข่าว
+  function addNews(){
+    const title = document.getElementById("newsTitle").value;
+    const content = document.getElementById("newsContent").value;
+    db.collection("news").add({title, content, createdAt: new Date()});
+    alert("เพิ่มข่าวเรียบร้อย!");
+  }
+</script>
+
+</body>
+</html>
