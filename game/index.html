@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<title>🎮 Game Zone</title>
+
+<style>
+body{
+  background:#000;
+  color:#fff;
+  font-family:sans-serif;
+  margin:0;
+  text-align:center;
+}
+
+header{
+  background:#111;
+  padding:10px;
+}
+
+/* ===== ADS ===== */
+.ad-banner{
+  background:#222;
+  padding:10px;
+  margin:8px;
+  border-radius:8px;
+}
+
+/* ===== GAME ===== */
+.topbar{
+  display:flex;
+  justify-content:space-around;
+  font-size:14px;
+  margin:10px 0;
+}
+
+#gameArea{
+  position:relative;
+  height:50vh;
+  background:#111;
+  overflow:hidden;
+}
+
+.target{
+  width:60px;
+  height:60px;
+  background:#ff6600;
+  border-radius:50%;
+  position:absolute;
+  cursor:pointer;
+}
+
+button{
+  padding:8px 14px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.btn-main{
+  background:linear-gradient(45deg,#ff00cc,#00ffff);
+  color:#fff;
+}
+
+/* ===== SHOP ===== */
+.shop{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:10px;
+  padding:15px;
+}
+
+.card{
+  background:#111;
+  padding:12px;
+  border-radius:10px;
+}
+
+/* ===== POPUP AD ===== */
+.popupAd{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.9);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+.popupBox{
+  background:#111;
+  padding:20px;
+  border-radius:12px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html" style="color:#0ff">← กลับหน้าแรก</a>
+  <h2>🎮 Click Rush Game</h2>
+</header>
+
+<!-- 🔥 Banner Ad Top -->
+<div class="ad-banner">
+  <a href="YOUR_AFFILIATE_LINK" target="_blank">
+    🔥 โปรโมชั่นพิเศษ คลิกซื้อเลย
+  </a>
+</div>
+
+<div class="topbar">
+  <div>⏰ <span id="time">30</span></div>
+  <div>🎯 <span id="score">0</span></div>
+  <div>💰 <span id="coins">0</span></div>
+  <div>🏆 <span id="high">0</span></div>
+</div>
+
+<button class="btn-main" onclick="startGame()">เริ่มเกม</button>
+
+<div id="gameArea"></div>
+
+<!-- ===== SHOP ===== -->
+<h3>🛒 Sticker Shop</h3>
+
+<div class="shop">
+
+  <div class="card">
+    <p>Neon Pack</p>
+    <a href="YOUR_SHOPEE_LINK" target="_blank">
+      <button>ซื้อเลย</button>
+    </a>
+  </div>
+
+  <div class="card">
+    <p>AI Meme</p>
+    <a href="YOUR_LAZADA_LINK" target="_blank">
+      <button>ซื้อเลย</button>
+    </a>
+  </div>
+
+  <!-- 🔥 Native Ad -->
+  <div class="card">
+    <p>⭐ สินค้าแนะนำ</p>
+    <a href="YOUR_AFFILIATE_LINK" target="_blank">
+      <button style="background:#ff6600">ดูสินค้า</button>
+    </a>
+  </div>
+
+</div>
+
+<!-- ===== POPUP AD หลังจบเกม ===== -->
+<div id="popupAd" class="popupAd">
+  <div class="popupBox">
+    <h3>🎁 รับของถูกก่อนใคร</h3>
+    <a href="YOUR_AFFILIATE_LINK" target="_blank">
+      <button class="btn-main">ดูโปรโมชัน</button>
+    </a>
+    <br><br>
+    <button onclick="closeAd()">ปิด</button>
+  </div>
+</div>
+
+<script>
+let score=0,time=30,coins=0,timer,spawnTimer;
+const area=document.getElementById("gameArea");
+
+const high = localStorage.getItem("highscore") || 0;
+document.getElementById("high").innerText=high;
+
+coins=parseInt(localStorage.getItem("coins")||0);
+updateCoins();
+
+function startGame(){
+  score=0;
+  time=30;
+  area.innerHTML="";
+  document.getElementById("score").innerText=0;
+
+  timer=setInterval(()=>{
+    time--;
+    document.getElementById("time").innerText=time;
+    if(time<=0) endGame();
+  },1000);
+
+  spawnTimer=setInterval(spawnTarget,600);
+}
+
+function spawnTarget(){
+  const t=document.createElement("div");
+  t.className="target";
+
+  t.style.left=Math.random()*(area.clientWidth-60)+"px";
+  t.style.top=Math.random()*(area.clientHeight-60)+"px";
+
+  t.onclick=()=>{
+    score++;
+    coins+=2;
+    updateCoins();
+    document.getElementById("score").innerText=score;
+    t.remove();
+  };
+
+  area.appendChild(t);
+  setTimeout(()=>t.remove(),800);
+}
+
+function endGame(){
+  clearInterval(timer);
+  clearInterval(spawnTimer);
+  area.innerHTML="";
+
+  const high = localStorage.getItem("highscore")||0;
+  if(score>high){
+    localStorage.setItem("highscore",score);
+    document.getElementById("high").innerText=score;
+  }
+
+  document.getElementById("popupAd").style.display="flex";
+}
+
+function closeAd(){
+  document.getElementById("popupAd").style.display="none";
+}
+
+function updateCoins(){
+  document.getElementById("coins").innerText=coins;
+  localStorage.setItem("coins",coins);
+}
+</script>
+
+</body>
+</html>
+
+
+
+/* ===== Affiliate Rotation System ===== */
+
+const links = [
+  "https://s.shopee.co.th/2B94H1T0pV",
+  "https://s.lazada.co.th/s.Z1MSxr?cc&t=h5"
+];
+
+function randomLink(){
+  return links[Math.floor(Math.random()*links.length)];
+}
+
+function assignAds(){
+  document.getElementById("topAd").href = randomLink();
+  document.getElementById("shopAd1").href = randomLink();
+  document.getElementById("shopAd2").href = randomLink();
+  document.getElementById("nativeAd").href = randomLink();
+  document.getElementById("popupLink").href = randomLink();
+}
+
+assignAds();
